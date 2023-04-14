@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" >
+<head>
+
+
+  <meta charset="utf-8">
+  <!-- <title>AGROTHON DJANGO</title> -->
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="./assets/logor.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" crossorigin="anonymous" />
+ 
+
+</head>
+
+<body onload="myfunc()">
+    
+    <script>
+        function myfunc(val)
+        {
+            var input=document.getElementById("exampleFormControlInput3").value;
+            //alert(input); 
+            if(input=="Sheath Rot")
+            {
+                document.getElementById("p1").innerHTML="Sheath Rot is caused by various fungal pathogens that attack the sheath, a protective layer that surrounds the stem of the plant. Symptoms of sheath rot can vary depending on the plant species and the severity of the infection, but they typically include dark lesions or spots on the sheath, which can eventually cause it to rot and die."
+            }
+            
+            if(input=="Brown Spot")
+            {
+                document.getElementById("p1").innerHTML="Brown spot is a plant disease caused by a fungal pathogen that affects many different types of plants, including fruit trees, vegetables, and ornamental plants. The fungus produces small, circular lesions on the leaves, which are initially yellow or light brown but eventually turn dark brown or black. Early detection and prompt treatment are important for minimizing the impact of brown spot on plant health and productivity."
+            }
+
+            if(input=="Sheath Blight")
+            {
+                document.getElementById("p1").innerHTML="Sheath blight is a fungal disease that affects many different types of grasses and cereals, including rice, corn, and wheat. The disease is caused by the fungus Rhizoctonia solani, which attacks the sheath, a protective layer that surrounds the stem of the plant. Symptoms of sheath blight include lesions on the sheath that can vary in size and shape, as well as a characteristic white, cottony fungal growth on the affected areas.he disease can cause significant yield losses in affected crops, and it is often spread through contaminated soil or infected plant debris."
+            }
+
+            if(input=="Bacterial Leaf Streak")
+            {
+                document.getElementById("p1").innerHTML="Bacterial leaf streak is a plant disease caused by the bacterium Xanthomonas oryzae, which primarily affects rice plants but can also infect other cereal crops. Symptoms of bacterial leaf streak include narrow, water-soaked lesions on the leaves that can turn brown or yellow as the disease progresses. In severe cases, the lesions can coalesce and cause the leaves to die prematurely, leading to reduced yields. Bacterial leaf streak is spread through contaminated seed or by splashing water, and it can be particularly problematic in areas with high humidity or rainfall. "
+            }
+
+            if(input=="Furasium Stalk Rot")
+            {
+                document.getElementById("p1").innerHTML="Fusarium stalk rot is a fungal disease that affects many different types of plants, including corn, wheat, and other cereal crops. The disease is caused by several species of the fungus Fusarium, which can infect the stalks and ears of the plant. Symptoms of Fusarium stalk rot include discolored or water-soaked lesions on the stalks, which can eventually cause the plant to collapse or break off at the base. Infected ears may also show signs of discoloration or rot. Fusarium stalk rot is often associated with stress factors such as drought, insect damage, or other diseases."
+            }
+
+            if(input=="Grey Leaf Spot")
+            {
+                document.getElementById("p1").innerHTML="Grey leaf spot is a fungal disease that affects many different types of grasses, including corn, sorghum, and turfgrass. The disease is caused by the fungus Cercospora zeae-maydis, which produces characteristic grey, oval lesions on the leaves of infected plants. As the disease progresses, the lesions can become elongated and expand, leading to significant damage to the plant. Grey leaf spot is often associated with warm, humid conditions, and it can be particularly problematic in fields with high plant densities or a history of the disease. "
+            }
+        }
+        
+    </script>
+  
+    <h2 class=" text-center  mt-5 ">CROP DISEASE PREDICTION</h2>
+    <div class="row container mt-5">
+        <div class="col-sm-6">
+            <div class="container-fluid ">
+                <img src="../static/images/ultra_final_dwt_fused.jpg"  height="450px" width="580px">
+            </div>
+        </div>
+        
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            
+              <form action="sendDataForDiseasePred">
+
+
+
+                <div class="mb-3 mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">Temperature</label>
+                    <input type="text" class="form-control w-75"  id="exampleFormControlInput1" name="Temperature" value="{{temp}}">
+                  </div>
+
+                  <div class="mb-3 mt-2">
+                    <label for="exampleFormControlInput2" class="form-label">Humidity</label>
+                    <input type="text" class="form-control w-75"  id="exampleFormControlInput2" name="Humidity" value="{{hum}}">
+                  </div>
+
+                  <select class="form-select mt-3 mb-4 w-75" aria-label="Default select example" name="cropType" >
+                    <option selected >{{crop}}</option>
+                    <option value="Paddy" >Paddy</option>
+                    <option value="Corn">Corn</option>
+                    
+                  </select>
+
+
+                <input type="submit" >
+
+              </form> 
+
+              <div class="mb-3 mt-4">
+                <label for="exampleFormControlInput3" class="form-label">Predicted Crop Disease</label>
+                <input type="text" class="form-control w-75"  id="exampleFormControlInput3" name="cropDisease" value="{{result}}">
+              </div>
+
+              <p id="p1"></p>
+              
+            
+        </div>
+
+        
+    </div>
+
+    
+
+   
+
+     
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+      
+  <app-root class="d-flex flex-column h-100"></app-root> 
+  
+    <script src=
+  "https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js">
+    </script>
+    <script src=
+  "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
+    </script>
+    <script src=
+  "https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+  integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+  integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+  crossorigin="anonymous"></script>
+
+</body>
+</html>
